@@ -1,32 +1,34 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: BCMobiShop
-  Date: 6/21/2021
-  Time: 11:26 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Product List</title>
-</head>
-<body>
-<table>
-    <thead>
-    <tr>
-        <th>Product Name</th>
-        <th>Category</th>
-        <th>Condition</th>
-        <th>Price</th>
-    </tr>
-    </thead>
-    <tr>
-        <td>${product.productName}</td>
-        <td>${product.productCategory}</td>
-        <td>${product.productCondition}</td>
-        <td>${product.productPrice}</td>
-    </tr>
-</table>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@include file="/WEB-INF/views/template/header.jsp"%>
 
-</body>
-</html>
+
+<div class="container-wrapper">
+    <div class="container">
+        <div class="page-header">
+            <h1>All Products</h1>
+
+            <p class="lead">Checkout all the awesome products available now!</p>
+        </div>
+
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr class="bg-success">
+                <th>Photo Thumb</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Condition</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <c:forEach items="${products}" var="product">
+                <tr>
+                    <td><img src="#" alt="image"/></td>
+                    <td>${product.productName}</td>
+                    <td>${product.productCategory}</td>
+                    <td>${product.productCondition}</td>
+                    <td>${product.productPrice} USD</td>
+                </tr>
+            </c:forEach>
+        </table>
+
+        <%@include file="/WEB-INF/views/template/footer.jsp" %>
